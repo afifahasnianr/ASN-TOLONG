@@ -511,7 +511,7 @@ if selected == "HRV Analysis":
     elif selected1 == 'Segmentation':
         new_title = '<p style="font-family:Georgia; color:blue; font-size: 25px; text-align: center;">SEGMENTATION</p>'
         st.markdown(new_title, unsafe_allow_html=True) 
-        optimizer_options1 = ['', '0-49', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL'
+        optimizer_options1 = ['', '0-49', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
         selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
 
         if selected_optimizer1 == '0-49':
