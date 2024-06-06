@@ -365,6 +365,7 @@ if selected == "HRV Analysis":
       if selected1 == 'BPM Baseline':
         st.title ('BPM RR BASELINE')
         #Plotting
+        bpm_rr_baseline = bpm_rr - 70
         n = np.arange(0, ptp, 1, dtype=int)
         fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
         fig.update_layout(
