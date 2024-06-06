@@ -161,8 +161,7 @@ for n in range (ptp):
   if bpm_rr [n]>100:
     bpm_rr[n]=rata
 
-n = np. arange(0,ptp,1,dtype=int)
-
+bpm_rr_baseline = bpm_rr - 70
 
 
 
@@ -368,10 +367,10 @@ if selected == "HRV Analysis":
             n = np.arange(0, ptp, 1, dtype=int)
             fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
             fig.update_layout(
-            xaxis_title="n",
-            yaxis_title="BPM",
-            xaxis=dict(showline=True, showgrid=True),
-            yaxis=dict(showline=True, showgrid=True)
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
             )
             st.plotly_chart(fig)
     
