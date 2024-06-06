@@ -511,45 +511,43 @@ if selected == "HRV Analysis":
         elif selected1 == 'Segmentation':
             new_title = '<p style="font-family:Georgia; color:blue; font-size: 25px; text-align: center;">SEGMENTATION</p>'
             st.markdown(new_title, unsafe_allow_html=True) 
-            optimizer_options2 = ['', '0-49', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
-            selected_optimizer2 = st.selectbox('Frequency Domain Analysis', optimizer_options2)
+            optimizer_options2 = ['', '0-50', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
+            selected_optimizer2 = st.selectbox('Segmentation', optimizer_options2)
 
-            if selected_optimizer2 == '0-49':
-                #tachogram segmentation 0-49
+            if selected_optimizer2 == '0-50':
+                #tachogram segmentation 0-50
                 st.header("Segmentation")
                 n = np.arange(0, ptp, 1, dtype=int)
-                n_segment = n[0:50]
-                bpm_rr_baseline_segment = bpm_rr_baseline[0:50]
-                fig = go.Figure(data=go.Scatter(x=n_segment, y=bpm_rr_baseline_segment, mode='lines'))
+                fig = go.Figure(data=go.Scatter(x=n_subset, y=bpm_rr_baseline_segment, mode='lines'))
                 fig.update_layout(
-                    title="Tachogram (0-49)",
+                    title="Tachogram (0-50)",
                     xaxis_title="n",
                     yaxis_title="BPM",
                     xaxis=dict(showline=True, showgrid=True),
                     yaxis=dict(showline=True, showgrid=True)
-            )
-            st.plotly_chart(fig)
+                )
+                st.plotly_chart(fig)
             
-            #Hamming window
-            st.header("Hamming Window")
-            fig.add_trace(go.Scatter(x=n_subset, y=bpm_rr_baseline_windowed, mode='lines'))
-            fig.update_layout(
-            title="Tachogram (Subset 0-49) with Hamming Window",
-            xaxis_title="n",
-            yaxis_title="BPM",
-            xaxis=dict(showline=True, showgrid=True),
-            yaxis=dict(showline=True, showgrid=True)
-            )
-            st.plotly_chart(fig)
+                #Hamming window
+                st.header("Hamming Window")
+                fig.add_trace(go.Scatter(x=n_subset, y=bpm_rr_baseline_windowed, mode='lines'))
+                fig.update_layout(
+                title="Tachogram (Subset 0-50) with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
 
-            #FFT
-            st.header("FFT")
-            fig.add_trace(go.Scatter(x=fft_freq_half, y=np.abs(fft_result_half), mode='lines'))
-            fig.update_layout(
-            title="FFT of Subset 0-49",
-            xaxis_title="Frequency (Hz)",
-            yaxis_title="Magnitude",
-            xaxis=dict(showline=True, showgrid=True),
-            yaxis=dict(showline=True, showgrid=True)
-            )
-            st.plotly_chart(fig)
+                #FFT
+                st.header("FFT")
+                fig.add_trace(go.Scatter(x=fft_freq_half, y=np.abs(fft_result_half), mode='lines'))
+                fig.update_layout(
+                title="FFT of Subset 0-50",
+                xaxis_title="Frequency (Hz)",
+                yaxis_title="Magnitude",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
