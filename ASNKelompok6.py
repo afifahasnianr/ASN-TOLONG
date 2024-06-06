@@ -490,6 +490,8 @@ if selected == "HRV Analysis":
         st.plotly_chart(fig_histogram)
     
     elif sub_selected == 'Frequency Domain Analysis':
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 25px; text-align: center;">Frequency Domain Analysis</p>' 
+        st.markdown(new_title, unsafe_allow_html=True)
         selected1 = option_menu(None, ["BPM Baseline", "Segmentation", "SPECTRUM"], 
                                 menu_icon="cast", default_index=0, orientation="horizontal")
 
@@ -508,46 +510,4 @@ if selected == "HRV Analysis":
             )
             st.plotly_chart(fig)   
 
-        elif selected1 == 'Segmentation':
-            new_title = '<p style="font-family:Georgia; color:blue; font-size: 25px; text-align: center;">SEGMENTATION</p>'
-            st.markdown(new_title, unsafe_allow_html=True) 
-            optimizer_options2 = ['', '0-50', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
-            selected_optimizer2 = st.selectbox('Segmentation', optimizer_options2)
-
-            if selected_optimizer2 == '0-50':
-                #tachogram segmentation 0-50
-                st.header("Segmentation")
-                n = np.arange(0, ptp, 1, dtype=int)
-                fig = go.Figure(data=go.Scatter(x=n_subset, y=bpm_rr_baseline_segment, mode='lines'))
-                fig.update_layout(
-                    title="Tachogram (0-50)",
-                    xaxis_title="n",
-                    yaxis_title="BPM",
-                    xaxis=dict(showline=True, showgrid=True),
-                    yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-            
-                #Hamming window
-                st.header("Hamming Window")
-                fig.add_trace(go.Scatter(x=n_subset, y=bpm_rr_baseline_windowed, mode='lines'))
-                fig.update_layout(
-                title="Tachogram (Subset 0-50) with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-
-                #FFT
-                st.header("FFT")
-                fig.add_trace(go.Scatter(x=fft_freq_half, y=np.abs(fft_result_half), mode='lines'))
-                fig.update_layout(
-                title="FFT of Subset 0-50",
-                xaxis_title="Frequency (Hz)",
-                yaxis_title="Magnitude",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
+       
