@@ -496,37 +496,37 @@ if selected == "HRV Analysis":
         if selected1 == 'BPM Baseline':
             st.title ('BPM RR BASELINE')
             
-        #Plotting
-        n = np.arange(0, ptp, 1, dtype=int)
-        fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
-        fig.update_layout(
-            title="TACHOGRAM",
-            xaxis_title="n",
-            yaxis_title="BPM",
-            xaxis=dict(showline=True, showgrid=True),
-            yaxis=dict(showline=True, showgrid=True)
-        )
-        st.plotly_chart(fig)   
-
-    elif selected1 == 'Segmentation':
-        new_title = '<p style="font-family:Georgia; color:blue; font-size: 25px; text-align: center;">SEGMENTATION</p>'
-        st.markdown(new_title, unsafe_allow_html=True) 
-        optimizer_options1 = ['', '0-49', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
-        selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
-
-        if selected_optimizer1 == '0-49':
-            #tachogram segmentation 0-49
-            st.header("Segmentation")
+            #Plotting
             n = np.arange(0, ptp, 1, dtype=int)
-            n_segment = n[0:50]
-            bpm_rr_baseline_segment = bpm_rr_baseline[0:50]
-            fig = go.Figure(data=go.Scatter(x=n_segment, y=bpm_rr_baseline_segment, mode='lines'))
+            fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
             fig.update_layout(
-            title="Tachogram (0-49)",
-            xaxis_title="n",
-            yaxis_title="BPM",
-            xaxis=dict(showline=True, showgrid=True),
-            yaxis=dict(showline=True, showgrid=True)
+                title="TACHOGRAM",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+            )
+            st.plotly_chart(fig)   
+
+        elif selected1 == 'Segmentation':
+            new_title = '<p style="font-family:Georgia; color:blue; font-size: 25px; text-align: center;">SEGMENTATION</p>'
+            st.markdown(new_title, unsafe_allow_html=True) 
+            optimizer_options1 = ['', '0-49', '50-100', '101-151', '151-200', '201-251', '251-301', '301=351', 'FFT TOTAL']
+            selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
+
+            if selected_optimizer1 == '0-49':
+                #tachogram segmentation 0-49
+                st.header("Segmentation")
+                n = np.arange(0, ptp, 1, dtype=int)
+                n_segment = n[0:50]
+                bpm_rr_baseline_segment = bpm_rr_baseline[0:50]
+                fig = go.Figure(data=go.Scatter(x=n_segment, y=bpm_rr_baseline_segment, mode='lines'))
+                fig.update_layout(
+                    title="Tachogram (0-49)",
+                    xaxis_title="n",
+                    yaxis_title="BPM",
+                    xaxis=dict(showline=True, showgrid=True),
+                    yaxis=dict(showline=True, showgrid=True)
             )
             st.plotly_chart(fig)
             
