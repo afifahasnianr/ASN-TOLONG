@@ -362,8 +362,8 @@ if selected == "HRV Analysis":
         selected1 = option_menu(None, ["BPM Baseline", "Segmentation","SPECTRUM"], 
         menu_icon="cast", default_index=0, orientation="horizontal")
         
-            if selected1 == "BPM Baseline":
-                st.title ('BPM RR BASELINE')
+        if selected1 == 'BPM Baseline':
+            st.title ('BPM RR BASELINE')
             #Plotting
             n = np.arange(0, ptp, 1, dtype=int)
             fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
