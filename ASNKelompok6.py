@@ -359,10 +359,10 @@ if selected == "HRV Analysis":
         st.plotly_chart(fig_histogram)
     
     elif sub_selected == 'Frequency Domain Analysis':
-        selected1 = option_menu(None, ["BPM Baseline", "Segmentation","SPECTRUM"], 
-        menu_icon="cast", default_index=0, orientation="horizontal")
+      selected1 = option_menu(None, ["BPM Baseline", "Segmentation","SPECTRUM"], 
+      menu_icon="cast", default_index=0, orientation="horizontal")
 
-        if selected1 == 'BPM Baseline':
+      if selected1 == 'BPM Baseline':
         st.title ('BPM RR BASELINE')
         #Plotting
         n = np.arange(0, ptp, 1, dtype=int)
