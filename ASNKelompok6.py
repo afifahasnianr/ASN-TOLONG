@@ -193,7 +193,7 @@ sampling_rate = 1
 fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
 half_point = len(fft_freq) // 2
 fft_freq_half = fft_freq[:half_point]
-fft_result_half = fft_result[:half_point
+fft_result_half = fft_result[:half_point]
 
 # Subset kedua dari data
 n_subset1 = n[50:100]
