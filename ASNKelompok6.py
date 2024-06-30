@@ -326,6 +326,7 @@ if selected == "Home":
    st.title('Project ASN Kelompok 6')
    
    st.subheader("Anggota kelompok")
+   st.subheader("Anggota ")
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Afifah Hasnia Nur Rosita - 5023211007</p>'
    st.markdown(new_title, unsafe_allow_html=True)
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Syahdifa Aisyah Qurrata Ayun - 5023211032</p>'
